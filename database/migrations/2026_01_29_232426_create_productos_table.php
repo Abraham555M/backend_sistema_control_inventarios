@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string("nom_producto", 200); 
             $table->text("des_producto")->nullable();
             $table->decimal('stk_min_producto', 10, 3);
+            $table->decimal('pre_cos_producto', 10, 2);
+            $table->decimal('pre_ven_producto', 10, 2);
             $table->tinyInteger("est_producto")->default(1); 
-
+            
             $table->unsignedBigInteger('id_unidad_medida');
             $table->foreign('id_unidad_medida')->references('id_unidad_medida')->on('unidad_medidas')->cascadeOnDelete();
             

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('unidad_medidas', function (Blueprint $table) {
             $table->id("id_unidad_medida");
             $table->string("nom_unidad_medida", 100);
+            $table->tinyInteger("est_unidad_medida")->default(1); 
             $table->timestamps();
         });
     }

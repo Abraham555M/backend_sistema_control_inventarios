@@ -23,6 +23,15 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users')->cascadeOnDelete();
 
+            $table->unsignedBigInteger('id_cliente');
+            $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('id_proveedor');
+            $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedors')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('id_orden_compra');
+            $table->foreign('id_orden_compra')->references('id_orden_compra')->on('orden_compras')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

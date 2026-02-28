@@ -23,6 +23,9 @@ return new class extends Migration
                           
             $table->unsignedBigInteger('id_almacen');
             $table->foreign('id_almacen')->references('id_almacen')->on('almacens')->cascadeOnDelete();
+
+             $table->unsignedBigInteger('id_ubicacion');
+            $table->foreign('id_ubicacion')->references('id_ubicacion')->on('ubicacions')->cascadeOnDelete();
                 
             $table->timestamps();
         });

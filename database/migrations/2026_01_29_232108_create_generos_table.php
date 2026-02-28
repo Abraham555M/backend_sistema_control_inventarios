@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('generos', function (Blueprint $table) {
             $table->id("id_genero");
             $table->string("nom_genero", 50);
+            $table->tinyInteger("est_genero")->default(1); 
             $table->timestamps();
         });
     }
