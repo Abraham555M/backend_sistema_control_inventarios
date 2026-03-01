@@ -5,24 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Marca extends Model
+class TipoCliente extends Model
 {
     use HasFactory; 
 
-    protected $table = "marcas";
+    protected $table = 'tipo_clientes';
 
-    protected $primaryKey = 'id_marca';
+    protected $primaryKey = 'id_tipo_cliente';
 
     protected $fillable = [
-        "nom_marca",
-        "est_marca"
+        'nom_tipo_cliente',
+        'est_tipo_cliente'
     ];
 
      /**
      * Casts de atributos
      */
     protected $casts = [
-        'est_marca' => 'integer'
+        'est_tipo_cliente' => 'integer'
     ];
 
     /**
@@ -36,7 +36,7 @@ class Marca extends Model
      */
     public function scopeActivas($query)
     {
-        return $query->where('est_marca', self::ACTIVO);
+        return $query->where('est_tipo_cliente', self::ACTIVO);
     }
 
     /**
@@ -44,18 +44,18 @@ class Marca extends Model
      */
     public function scopeInactivas($query)
     {
-        return $query->where('est_marca', self::INACTIVO);
+        return $query->where('est_tipo_cliente', self::INACTIVO);
     }
 
     /**
      * Relaciones
      */
-    public function producto()
+    public function cliente()
     {
         return $this->hasMany(
-            Producto::class,
-            'id_producto',
-            'id_producto'
+            Cliente::class,
+            'id_cliente',
+            'id_cliente'
         );
     }
 }
