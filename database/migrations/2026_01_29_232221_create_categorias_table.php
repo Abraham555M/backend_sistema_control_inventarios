@@ -15,6 +15,14 @@ return new class extends Migration
             $table->id("id_categoria");
             $table->string("nom_categoria", 100);
             $table->tinyInteger('est_categoria')->default(1);
+            
+            $table->unsignedBigInteger('id_color');
+            $table->foreign('id_color')->references('id_color')->on('colors')->restrictOnDelete();
+
+            $table->unsignedBigInteger('id_icono');
+            $table->foreign('id_icono')->references('id_icono')->on('iconos')->restrictOnDelete();
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

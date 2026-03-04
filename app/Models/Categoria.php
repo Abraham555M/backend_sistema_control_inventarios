@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
-    use HasFactory; 
+    use HasFactory, SoftDeletes; 
 
     protected $table = "categorias";
 
@@ -15,7 +16,9 @@ class Categoria extends Model
 
     protected $fillable = [
         "nom_categoria",
-        "est_categoria"
+        "est_categoria",
+        "id_icono",
+        "id_color"
     ];
 
     protected $casts = [
@@ -41,12 +44,30 @@ class Categoria extends Model
     /**
      * Relaciones
      */
-    public function producto()
+    public function productos()
     {
         return $this->hasMany(
             Producto::class,
-            'id_producto',
-            'id_producto'
+            'id_categoria',
+            'id_categoria'
+        );
+    }
+
+    public function icono()
+    {
+        return $this->belongsTo(
+            Icono::class,
+            'id_icono',
+            'id_icono'
+        );
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(
+            Color::class,
+            'id_color',
+            'id_color'
         );
     }
 }
