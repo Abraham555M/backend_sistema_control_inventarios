@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Responses\ApiResponse;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoriaController extends Controller
 {
@@ -62,7 +63,12 @@ class CategoriaController extends Controller
     public function registrarCategoria(Request $request)
     {
         $data = $request->validate([
-            'nom_categoria' => 'required|string|max:100|unique:categorias,nom_categoria',
+            'nom_categoria' => [
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('categorias', 'nom_categoria')->whereNull('deleted_at') // Solo cuenta productos activos
+            ],
             'id_icono'      => 'required|exists:iconos,id_icono',
             'id_color'      => 'required|exists:colors,id_color'
         ]);
@@ -109,7 +115,14 @@ class CategoriaController extends Controller
         }
 
         $data = $request->validate([
-            'nom_categoria' => "required|string|max:100|unique:categorias,nom_categoria,$id_categoria,id_categoria",
+            'nom_categoria' => [
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('categorias', 'nom_categoria')
+                    ->ignore($id_categoria, 'id_categoria')
+                    ->whereNull('deleted_at')
+            ],
             'id_icono'      => 'required|exists:iconos,id_icono',
             'id_color'      => 'required|exists:colors,id_color',
             'est_categoria' => 'required|integer|in:0,1'
