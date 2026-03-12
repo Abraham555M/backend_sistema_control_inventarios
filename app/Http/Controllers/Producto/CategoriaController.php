@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function selectCategorias()
+    {
+        $categorias = Categoria::select("id_categoria", "nom_categoria")
+                        ->where('est_categoria', 1) // Solo activas
+                        ->orderBy('nom_categoria', 'asc')
+                        ->get();
+
+        if ($categorias->isEmpty()) {
+            return ApiResponse::notFound("No se encontraron categorias");
+        }
+
+        return ApiResponse::ok($categorias, 'Categorias obtenidas correctamente');
+    }
+
     // Metodo para listar y filtrar por estado o búsqueda
     public function listarCategorias(Request $request)
     { 
@@ -35,7 +49,8 @@ class CategoriaController extends Controller
             $query->where('nom_categoria', 'like', '%' . $request->buscar . '%');
         }
 
-        $categorias = $query->get(); // Ejecutar consulta
+        $categorias = $query->orderBy('created_at', 'desc')
+                        ->get();
 
         if ($categorias->isEmpty()) {
             return ApiResponse::notFound("No se encontraron categorias");
