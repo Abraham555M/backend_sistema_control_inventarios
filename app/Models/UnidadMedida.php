@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UnidadMedida extends Model
 {
-    use HasFactory; 
+    use HasFactory, SoftDeletes; 
 
     protected $table = "unidad_medidas";
     
@@ -15,6 +16,7 @@ class UnidadMedida extends Model
 
     protected $fillable = [
         "nom_unidad_medida",
+        "abr_unidad_medida",
         "est_unidad_medida"
     ];
 
@@ -36,12 +38,12 @@ class UnidadMedida extends Model
     /**
      * Relaciones
      */
-    public function producto()
+    public function productos()
     {
         return $this->hasMany(
             Producto::class,
-            'id_producto',
-            'id_producto'
+            'id_unidad_medida',
+            'id_unidad_medida'
         );
     }
 }
