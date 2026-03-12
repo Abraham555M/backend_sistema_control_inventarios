@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id("id_marca");
             $table->string("nom_marca", 100);
             $table->tinyInteger('est_marca')->default(1);
+
+            $table->unsignedBigInteger("id_pais");
+            $table->foreign('id_pais')->references('id_pais')->on('pais')->restrictOnDelete();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

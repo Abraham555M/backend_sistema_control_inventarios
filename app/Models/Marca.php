@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Marca extends Model
 {
-    use HasFactory; 
+    use HasFactory, SoftDeletes; 
 
     protected $table = "marcas";
 
@@ -15,7 +16,8 @@ class Marca extends Model
 
     protected $fillable = [
         "nom_marca",
-        "est_marca"
+        "est_marca",
+        "id_pais"
     ];
 
      /**
@@ -50,12 +52,21 @@ class Marca extends Model
     /**
      * Relaciones
      */
-    public function producto()
+    public function productos()
     {
         return $this->hasMany(
             Producto::class,
-            'id_producto',
-            'id_producto'
+            'id_marca',
+            'id_marca'
+        );
+    }
+
+    public function pais()
+    {
+        return $this->belongsTo(
+            Pais::class,
+            'id_pais',
+            'id_pais'
         );
     }
 }
