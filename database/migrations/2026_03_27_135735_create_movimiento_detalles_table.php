@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('movimiento_detalles', function (Blueprint $table) {
             $table->id("id_movimiento_detalle");
             $table->decimal("can_movimiento_detalle", 10, 3);
+            $table->decimal("pre_movimiento_detalle", 10, 3);
             
             $table->unsignedBigInteger('id_movimiento');
             $table->foreign('id_movimiento')->references('id_movimiento')->on('movimientos')->cascadeOnDelete();
@@ -22,10 +23,10 @@ return new class extends Migration
             $table->foreign('id_producto')->references('id_producto')->on('productos')->cascadeOnDelete();
                           
             $table->unsignedBigInteger('id_almacen');
-            $table->foreign('id_almacen')->references('id_almacen')->on('almacens')->cascadeOnDelete();
+            $table->foreign('id_almacen')->references('id_almacen')->on('almacenes')->cascadeOnDelete();
 
              $table->unsignedBigInteger('id_ubicacion');
-            $table->foreign('id_ubicacion')->references('id_ubicacion')->on('ubicacions')->cascadeOnDelete();
+            $table->foreign('id_ubicacion')->references('id_ubicacion')->on('ubicaciones')->cascadeOnDelete();
                 
             $table->timestamps();
         });

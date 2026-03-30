@@ -11,14 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proveedors', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->id("id_proveedor");
             $table->string("nom_proveedor", 150);
+            $table->string("num_doc_proveedor", 20);
             $table->string("cod_proveedor", 10)->unique();
             $table->string("ruc_proveedor", 11)->unique();
             $table->string("dir_proveedor", 150);
             $table->string("tel_proveedor", 15)->nullable(); 
+            $table->string("cnt_proveedor", 150)->nullable();
             $table->tinyInteger("est_proveedor")->default(1);
+
+            $table->unsignedBigInteger('id_documento');
+            $table->foreign('id_documento')->references('id_documento')->on('tipo_documentos')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

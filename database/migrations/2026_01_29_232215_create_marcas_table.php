@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('est_marca')->default(1);
 
             $table->unsignedBigInteger("id_pais");
-            $table->foreign('id_pais')->references('id_pais')->on('pais')->restrictOnDelete();
+            $table->foreign('id_pais')->references('id_pais')->on('paises')->restrictOnDelete();
 
             $table->softDeletes();
             $table->timestamps();

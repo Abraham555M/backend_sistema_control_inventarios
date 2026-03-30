@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_usuarios', function (Blueprint $table) {
-            $table->id("id_tipo_usuario");
-            $table->string("nom_tipo_usuario", 50);
+        Schema::create('paises', function (Blueprint $table) {
+            $table->id("id_pais");
+            $table->string("nom_pais", 100);
+            $table->char("iso2_pais", 2);
+            $table->char("iso3_pais", 3);
+            $table->tinyInteger('est_pais')->default(1);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_usuarios');
+        Schema::dropIfExists('pais');
     }
 };

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('est_categoria')->default(1);
             
             $table->unsignedBigInteger('id_color');
-            $table->foreign('id_color')->references('id_color')->on('colors')->restrictOnDelete();
+            $table->foreign('id_color')->references('id_color')->on('colores')->restrictOnDelete();
 
             $table->unsignedBigInteger('id_icono');
             $table->foreign('id_icono')->references('id_icono')->on('iconos')->restrictOnDelete();

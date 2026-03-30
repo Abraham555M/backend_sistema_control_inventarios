@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id("id_producto");
-            $table->string("cod_producto", 10)->unique();
+            $table->string("cod_producto", 10)->unique()->nullable();
+            $table->string("cod_bar_producto", 10)->unique();
             $table->string("nom_producto", 200); 
             $table->text("des_producto")->nullable();
+            $table->string('img_producto', 255)->nullable();
             $table->decimal('stk_min_producto', 10, 3);
             $table->decimal('pre_cos_producto', 10, 2);
             $table->decimal('pre_ven_producto', 10, 2);
@@ -30,6 +32,13 @@ return new class extends Migration
             $table->unsignedBigInteger('id_marca');
             $table->foreign('id_marca')->references('id_marca')->on('marcas')->cascadeOnDelete();
 
+            $table->unsignedBigInteger("id_icono");
+            $table->foreign("id_icono")->references("id_icono")->on("iconos")->cascadeOnDelete();
+
+            $table->unsignedBigInteger("id_afectacion");
+            $table->foreign("id_afectacion")->references("id_afectacion")->on("tipo_afectaciones")->cascadeOnDelete();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

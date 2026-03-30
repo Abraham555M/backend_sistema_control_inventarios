@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('movimientos', function (Blueprint $table) {
             $table->id("id_movimiento");
+            $table->date("cod_movimiento", 10)->unique();
             $table->date("fch_movimiento");
             $table->text("obs_movimiento")->nullable();
             $table->tinyInteger("est_movimiento")->default(1);
@@ -23,14 +24,21 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('id_cliente');
-            $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->cascadeOnDelete();
+            $table->unsignedBigInteger('id_almacen');
+            $table->foreign('id_almacen')->references('id_almacen')->on('almacenes')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('id_proveedor');
-            $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedors')->cascadeOnDelete();
+            // Nullable
+            $table->unsignedBigInteger('id_transferencia')->nullable();
+            $table->foreign('id_transferencia')->references('id_transferencia')->on('transferencias')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('id_orden_compra');
+            $table->unsignedBigInteger('id_devolucion')->nullable();
+            $table->foreign('id_devolucion')->references('id_devolucion')->on('devoluciones')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('id_orden_compra')->nullable();
             $table->foreign('id_orden_compra')->references('id_orden_compra')->on('orden_compras')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('id_venta')->nullable();
+            $table->foreign('id_venta')->references('id_venta')->on('ventas')->cascadeOnDelete();
 
             $table->timestamps();
         });

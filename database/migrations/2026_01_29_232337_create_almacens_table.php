@@ -11,12 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('almacens', function (Blueprint $table) {
+        Schema::create('almacenes', function (Blueprint $table) {
             $table->id("id_almacen");
-            $table->string("cod_almacen", 10)->unique();
+            $table->string("cod_almacen", 10)->unique()->nullable();
             $table->string("nom_almacen", 100);
-            $table->string("dir_almacen", 150)->nullable();
+            $table->string("des_almacen", 150)->nullable();
             $table->tinyInteger("est_almacen")->default(1);
+
+            $table->unsignedBigInteger("id_sucursal");
+            $table->foreign('id_sucursal')->references('id_sucursal')->on('sucursales')->cascadeOnDelete();
+
+            $table->unsignedBigInteger("id_icono");
+            $table->foreign('id_icono')->references('id_icono')->on('iconos')->cascadeOnDelete();
+
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }

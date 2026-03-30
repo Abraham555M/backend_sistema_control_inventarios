@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_documentos', function (Blueprint $table) {
-            $table->id("id_documento");
-            $table->string("cod_sun_documento", 20)->unique();
-            $table->string("nom_documento", 100);
-            $table->tinyInteger("est_documento")->default(1);
+        Schema::create('distritos', function (Blueprint $table) {
+            $table->id("id_distrito");
+            $table->string("nom_distrito", 100);
+            $table->string("ubg_distrito", 6)->unique(); 
+            $table->tinyInteger("est_distrito")->default(1); 
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_documentos');
+        Schema::dropIfExists('distritos');
     }
 };

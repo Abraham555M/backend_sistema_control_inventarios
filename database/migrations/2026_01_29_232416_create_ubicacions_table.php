@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ubicacions', function (Blueprint $table) {
+        Schema::create('ubicaciones', function (Blueprint $table) {
             $table->id("id_ubicacion");
             $table->string("cod_ubicacion",10)->unique(); 
             $table->text("des_ubicacion", 200)->nullable(); 
             $table->tinyInteger("est_ubicacion")->default(1); 
        
             $table->unsignedBigInteger('id_almacen');
-            $table->foreign('id_almacen')->references('id_almacen')->on('almacens')->cascadeOnDelete();
+            $table->foreign('id_almacen')->references('id_almacen')->on('almacenes')->cascadeOnDelete();
 
             $table->timestamps();
         });
