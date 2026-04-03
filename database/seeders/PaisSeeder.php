@@ -16,7 +16,7 @@ class PaisSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('pais')->insert([
+        DB::table('paises')->insert([
             ['nom_pais' => 'Perú',          'iso2_pais' => 'PE', 'iso3_pais' => 'PER', 'est_pais' => 1, 'created_at' => $now, 'updated_at' => $now],
             ['nom_pais' => 'Estados Unidos', 'iso2_pais' => 'US', 'iso3_pais' => 'USA', 'est_pais' => 1, 'created_at' => $now, 'updated_at' => $now],
             ['nom_pais' => 'China',          'iso2_pais' => 'CN', 'iso3_pais' => 'CHN', 'est_pais' => 1, 'created_at' => $now, 'updated_at' => $now],

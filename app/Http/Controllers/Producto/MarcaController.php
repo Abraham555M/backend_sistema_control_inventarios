@@ -66,7 +66,7 @@ class MarcaController extends Controller
                 'max:100',
                 Rule::unique('marcas', 'nom_marca')->whereNull('deleted_at')
             ],
-            'id_pais' => 'required|exists:pais,id_pais'
+            'id_pais' => 'required|exists:paises,id_pais'
         ]);
 
         $data['est_marca'] = Marca::ACTIVO;
@@ -120,7 +120,7 @@ class MarcaController extends Controller
                  * Nombre usado por marca eliminada
                  */
             ],
-            'id_pais' => 'required|exists:pais,id_pais',
+            'id_pais' => 'required|exists:paises,id_pais',
             'est_marca'=> 'required|integer|in:0,1'
         ]);
 

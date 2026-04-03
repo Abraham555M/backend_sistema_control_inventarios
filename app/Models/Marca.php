@@ -52,21 +52,21 @@ class Marca extends Model
     /**
      * Relaciones
      */
-    public function productos()
-    {
-        return $this->hasMany(
-            Producto::class,
-            'id_marca',
-            'id_marca'
-        );
-    }
-
     public function pais()
     {
         return $this->belongsTo(
             Pais::class,
             'id_pais',
             'id_pais'
+        );
+    }
+
+    public function productos()
+    {
+        return $this->hasMany(
+            Producto::class,
+            'id_marca',
+            'id_marca'
         );
     }
 }
