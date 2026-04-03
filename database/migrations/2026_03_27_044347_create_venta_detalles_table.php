@@ -20,7 +20,8 @@ return new class extends Migration
             $table->decimal("mto_igv_venta_detalle", 10, 2);
             $table->decimal("sub_tot_venta_detalle", 10, 2);
             $table->decimal("tot_venta_detalle", 10, 2);
-
+            $table->tinyInteger("est_venta_detalle")->default(1);
+            
             $table->unsignedBigInteger("id_venta");
             $table->foreign("id_venta")->references("id_venta")->on("ventas");
 

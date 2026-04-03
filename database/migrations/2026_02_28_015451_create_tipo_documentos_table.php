@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipo_documentos', function (Blueprint $table) {
             $table->id("id_documento");
-            $table->string("cod_sun_documento", 20)->unique();
+            $table->string("cod_sun_documento", 20)->unique();  // CODIGO DE LA SUNAT 
             $table->string("nom_documento", 100);
             $table->tinyInteger("est_documento")->default(1);
             $table->timestamps();

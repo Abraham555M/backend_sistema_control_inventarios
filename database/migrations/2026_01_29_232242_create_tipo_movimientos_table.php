@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tipo_movimientos', function (Blueprint $table) {
             $table->id("id_tipo_movimiento");
             $table->string("nom_tipo_movimiento", 100);
-            $table->string("ent_tipo_movimiento", 20); 
+            $table->string("ent_tipo_movimiento", 20); // ENTIDAD: devolucion, transferencia, venta, compra etc
             $table->tinyInteger("est_tipo_movimiento")->default(1); 
             $table->timestamps();
         });

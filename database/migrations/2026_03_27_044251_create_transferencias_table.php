@@ -20,10 +20,10 @@ return new class extends Migration
             $table->tinyInteger("est_transferencia")->default(1);
 
             $table->unsignedBigInteger("id_usuario_solicita");
-            $table->foreign("id_usuario_solicita")->references("id")->on("users");
+            $table->foreign("id_usuario_solicita")->references("id_usuario")->on("usuarios");
 
             $table->unsignedBigInteger("id_usuario_recibe")->nullable();
-            $table->foreign("id_usuario_recibe")->references("id")->on("users");
+            $table->foreign("id_usuario_recibe")->references("id_usuario")->on("usuarios");
 
             $table->unsignedBigInteger('id_almacen_origen');
             $table->foreign('id_almacen_origen')->references('id_almacen')->on('almacenes')->restrictOnDelete();

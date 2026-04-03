@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string("num_pago", 30); // NUMERO DE OPERACION
             $table->date("fch_pago");
             $table->text("obs_pago", 200); 
-
+            $table->tinyInteger("est_pago")->default(1);
+            
             $table->unsignedBigInteger("id_venta");
             $table->foreign("id_venta")->references("id_venta")->on("ventas");
 
             $table->unsignedBigInteger("id_usuario");
-            $table->foreign("id_usuario")->references("id")->on("users");
+            $table->foreign("id_usuario")->references("id_usuario")->on("usuarios");
 
             $table->unsignedBigInteger("id_tipo_pago");
             $table->foreign("id_tipo_pago")->references("id_tipo_pago")->on("tipo_pagos");

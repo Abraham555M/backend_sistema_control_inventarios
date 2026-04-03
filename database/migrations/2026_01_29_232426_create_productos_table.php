@@ -36,7 +36,7 @@ return new class extends Migration
             $table->foreign("id_icono")->references("id_icono")->on("iconos")->cascadeOnDelete();
 
             $table->unsignedBigInteger("id_afectacion");
-            $table->foreign("id_afectacion")->references("id_afectacion")->on("tipo_afectaciones")->cascadeOnDelete();
+            $table->foreign("id_afectacion")->references("id_afectacion")->on("afectaciones")->cascadeOnDelete();
 
             $table->softDeletes();
             $table->timestamps();

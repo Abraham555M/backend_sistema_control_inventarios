@@ -14,24 +14,24 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
+    {          
         $this->call([
             IconoSeeder::class,
             ColorSeeder::class,
             PaisSeeder::class,
             DistritoSeeder::class,
-            TipoClienteSeeder::class,
-            TipoDocumentoSeeder::class,
-            TipoUsuarioSeeder::class,
-            TipoMovimientoSeeder::class,
+            RolUsuarioSeeder::class,
             GeneroSeeder::class
+            // TipoClienteSeeder::class,
+            // TipoDocumentoSeeder::class,
+            // TipoMovimientoSeeder::class,
+        ]);
+
+        User::factory(10)->create();
+        User::factory()->create([
+            'nom_usuario' => 'Test',
+            'ape_usuario' => 'User',
+            'ema_usuario' => 'test@example.com',
         ]);
     }
 }

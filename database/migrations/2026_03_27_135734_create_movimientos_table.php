@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('id_tipo_movimiento')->references('id_tipo_movimiento')->on('tipo_movimientos')->cascadeOnDelete();
 
             $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->cascadeOnDelete();
 
             $table->unsignedBigInteger('id_almacen');
             $table->foreign('id_almacen')->references('id_almacen')->on('almacenes')->cascadeOnDelete();

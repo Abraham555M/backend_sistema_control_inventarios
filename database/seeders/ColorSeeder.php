@@ -13,7 +13,7 @@ class ColorSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('colors')->insert([
+        DB::table('colores')->insert([
             ['nom_color' => 'Rojo',       'hex_color' => '#DC3545', 'est_color' => 1],
             ['nom_color' => 'Azul',       'hex_color' => '#0D6EFD', 'est_color' => 1],
             ['nom_color' => 'Verde',      'hex_color' => '#198754', 'est_color' => 1],

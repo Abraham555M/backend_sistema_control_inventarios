@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal("can_devolucion_detalle", 10, 2);
             $table->decimal("pre_devolucion_detalle", 10, 2);
             $table->text("mot_devolucion_detalle", 200); 
+            // SE PUEDE CONSIDERAR MAS ADELANTE EL ESTADO
 
             $table->unsignedBigInteger("id_devolucion");
             $table->foreign("id_devolucion")->references("id_devolucion")->on("devoluciones");
