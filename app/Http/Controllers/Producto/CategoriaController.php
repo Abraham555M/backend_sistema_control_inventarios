@@ -70,7 +70,7 @@ class CategoriaController extends Controller
                 Rule::unique('categorias', 'nom_categoria')->whereNull('deleted_at') // Solo cuenta productos activos
             ],
             'id_icono'      => 'required|exists:iconos,id_icono',
-            'id_color'      => 'required|exists:colors,id_color'
+            'id_color'      => 'required|exists:colores,id_color'
         ]);
 
         $data['est_categoria'] = Categoria::ACTIVO;
@@ -124,7 +124,7 @@ class CategoriaController extends Controller
                     ->whereNull('deleted_at')
             ],
             'id_icono'      => 'required|exists:iconos,id_icono',
-            'id_color'      => 'required|exists:colors,id_color',
+            'id_color'      => 'required|exists:colores,id_color',
             'est_categoria' => 'required|integer|in:0,1'
         ]);
 

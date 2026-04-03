@@ -44,15 +44,6 @@ class Categoria extends Model
     /**
      * Relaciones
      */
-    public function productos()
-    {
-        return $this->hasMany(
-            Producto::class,
-            'id_categoria',
-            'id_categoria'
-        );
-    }
-
     public function icono()
     {
         return $this->belongsTo(
@@ -68,6 +59,15 @@ class Categoria extends Model
             Color::class,
             'id_color',
             'id_color'
+        );
+    }
+
+    public function productos()
+    {
+        return $this->hasMany(
+            Producto::class,
+            'id_categoria',
+            'id_categoria'
         );
     }
 }
