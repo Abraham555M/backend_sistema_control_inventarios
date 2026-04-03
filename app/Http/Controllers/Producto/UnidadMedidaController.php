@@ -31,9 +31,9 @@ class UnidadMedidaController extends Controller
             "buscar" => 'nullable|max:100'
         ]);
 
-        $totalProductos = Producto::count();
+        $totalProductos = Producto::count(); // Cantidad totales de productos
 
-        $query = UnidadMedida::withCount("productos");
+        $query = UnidadMedida::withCount("productos"); // Tipo de unidad de medida relacionada a un producto
         
         if($request->filled("estado")){
             $query->where("est_unidad_medida", $request->estado); 
