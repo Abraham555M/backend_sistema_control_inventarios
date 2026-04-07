@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger("id_distrito");
             $table->foreign('id_distrito')->references('id_distrito')->on('distritos')->cascadeOnDelete();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
