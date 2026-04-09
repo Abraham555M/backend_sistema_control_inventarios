@@ -21,10 +21,13 @@ class DatabaseSeeder extends Seeder
             PaisSeeder::class,
             DistritoSeeder::class,
             RolUsuarioSeeder::class,
-            GeneroSeeder::class
-            // TipoClienteSeeder::class,
-            // TipoDocumentoSeeder::class,
-            // TipoMovimientoSeeder::class,
+            GeneroSeeder::class,
+            TipoAfectacionSeeder::class,
+            TipoClienteSeeder::class,
+            TipoDocumentoSeeder::class,
+            TipoMovimientoSeeder::class,
+            TipoPagoSeeder::class,
+            TipoComprobanteSeeder::class
         ]);
 
         User::factory(10)->create();
